@@ -1,25 +1,21 @@
-# Clone from the Fedora 23 image
-FROM fedora:23
+FROM fedora:35
 
 MAINTAINER Jordan Liggitt <jliggitt@redhat.com>
 
 # Install Kerberos, mod_auth_kerb
 RUN dnf install -y \
-  apr-util-openssl \
-  authconfig \
+  openssl \
+  authselect \
   httpd \
   krb5-libs \
   krb5-server \
   krb5-workstation \
   php \
-  mod_php \
   mod_auth_gssapi \
-  mod_auth_kerb \
   mod_auth_mellon \
   mod_intercept_form_submit \
   mod_session \
   mod_ssl \
-  pam_krb5 \
   && dnf clean all
 
 # Add conf files for Kerberos
